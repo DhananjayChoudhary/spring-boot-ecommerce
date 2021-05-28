@@ -12,5 +12,7 @@ import com.training.ecommerce.domain.Product;
 public interface ProductRepository extends JpaRepository<Product, Long>{
 
 	 Page<Product> findByProductCategoryId(@RequestParam("id") Long id, Pageable pageable);
+	 
+	 Page<Product> findByNameContainingIgnoreCase(@RequestParam("name")String name, Pageable pageable);
 	
 }
