@@ -14,8 +14,10 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
+import com.training.ecommerce.domain.Country;
 import com.training.ecommerce.domain.Product;
 import com.training.ecommerce.domain.ProductCategory;
+import com.training.ecommerce.domain.State;
 
 @Configuration
 public class DataRestConfig implements RepositoryRestConfigurer {
@@ -44,6 +46,16 @@ public class DataRestConfig implements RepositoryRestConfigurer {
 		 .withCollectionExposure((metdata,httpMethods) ->  httpMethods.disable(theUnsupportedActions))
 		 ;		
 		
+		config.getExposureConfiguration()
+		.forDomainType(Country.class)
+		.withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
+		 .withCollectionExposure((metdata,httpMethods) ->  httpMethods.disable(theUnsupportedActions))
+		 ;	
+		config.getExposureConfiguration()
+		.forDomainType(State.class)
+		.withItemExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
+		 .withCollectionExposure((metdata,httpMethods) ->  httpMethods.disable(theUnsupportedActions))
+		 ;	
 		//call an internal method
 		exposedIds(config);
 		
